@@ -16,7 +16,7 @@ int main(int argc, char* argv[]){
   // powr = getexp(size);
   // fft_order(size, powr, data);
   // fft_apply(size, powr, data, ruts);
-  // write("FFT_of_", name, size, data);
+  write("FFT_of_", name, size, data);
   //
   // free(ruts);
   // free(data);
