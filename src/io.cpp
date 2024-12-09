@@ -4,13 +4,31 @@
 #include <cstdlib>
 #include <SFML/Graphics.hpp>
 
-double* read(char *src, int *L, char **name){
+double* read(char *path, int *L, char **name){
   double *data;
-  int src_lenf = strlen(src), iter;
-  for(iter=src_lenf-1; src[iter]!='/'; iter--);
-  *name=src+iter+1;
+  int path_lenf = strlen(path), iter;
+  sf::Image source;
+  for(iter=path_lenf-1; path[iter]!='/'; iter--);
+  *name=path+iter+1;
+  iter--;
+  for(;path[iter]!='/'; iter--);
+  *L=atoi(path+iter+1);
+  data = (double*) calloc(*L**L, 6*sizeof(double));
+  source.loadFromFile(path);
+  const sf::Uint8 img_data = source.getPixelsPtr();
+  for(iter=0; iter<*L**L; iter++){
+    //RED
+    data[6*iter]    = img_data[4*iter];
+    data[6*iter+1]  = 0.;
+    //GREEN
+    data[6*iter+2]  = img_data[4*iter+1];
+    data[6*iter+3]  = 0.;
+    //BLUE
+    data[6*iter+4]  = img_data[4*iter+2];
+    data[6*iter+5]  = 0.;
+  }
 
-  return NULL;
+  return data;
   // FILE *in;
   // int it;
   // in = fopen(src, "r");

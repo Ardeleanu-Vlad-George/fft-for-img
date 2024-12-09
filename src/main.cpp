@@ -12,7 +12,6 @@ int main(int argc, char* argv[]){
   int size, powr;
   char *name; //this one will point to the name of the file
   data = read(argv[1], &size, &name);
-  printf("%s\n", name);
   // ruts = every_rou(size);
   // powr = getexp(size);
   // fft_order(size, powr, data);
