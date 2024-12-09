@@ -6,19 +6,20 @@
 #include "fft_prep_cpx.h"
 
 
-int main(){
-  double **mtrx;
+int main(int argc, char* argv[]){
+  double *data;
   double *ruts;
   int size, powr;
-  mtrx = read("data/in", &size);
-  ruts = every_rou(size);
-  powr = getexp(size);
-  fft_order(size, powr, *mtrx);
-  fft_apply(size, powr, *mtrx, ruts);
-  write("./data/out", size, mtrx);
-
-  free(ruts);
-  free(*mtrx);
-  free(mtrx);
+  char *name; //this one will point to the name of the file
+  data = read(argv[1], &size, &name);
+  printf("%s\n", name);
+  // ruts = every_rou(size);
+  // powr = getexp(size);
+  // fft_order(size, powr, data);
+  // fft_apply(size, powr, data, ruts);
+  // write("FFT_of_", name, size, data);
+  //
+  // free(ruts);
+  // free(data);
   return 0;
 }

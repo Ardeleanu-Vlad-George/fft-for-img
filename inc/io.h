@@ -23,7 +23,7 @@
     \return array of pointers to double, the pointers represent rows, their members represent elements,
     the user must free the memory of the first row, then of the whole array of pointers
 */
-double** read(char*, int*);
+double* read(char*, int*, char**);
 
 /**
     \brief Write vector of complex doubles representing the DFT
@@ -35,6 +35,6 @@ double** read(char*, int*);
     @param size [in] - length of the result to be printed
     @param result [in] - result to be printed
 */
-void write(char*, int, double**);
+void write(const char*, char*, int, double*);
 
 #endif//_IO_H_
