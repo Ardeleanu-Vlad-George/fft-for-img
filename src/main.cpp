@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include <cstdio>
+#include <cstdlib>
 #include "io.h"
 #include "fft_comp.h"
 #include "fft_prep_bit.h"

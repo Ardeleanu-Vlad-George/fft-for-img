@@ -1,6 +1,6 @@
 #include "io.h"
-#include <stdio.h>
-#include <stdlib.h>
+#include <cstdio>
+#include <cstdlib>
 
 double** read(char *src, int *L){
   double **data;

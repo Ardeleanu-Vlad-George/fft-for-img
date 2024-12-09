@@ -1,8 +1,8 @@
 #include "fft_prep_cpx.h"
 #include "cpx_op.h"
 #include "defs.h"
-#include <math.h>
-#include <stdlib.h>
+#include <cmath>
+#include <cstdlib>
 
 
 void first_rou(int grade, double *data){
