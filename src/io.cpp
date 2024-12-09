@@ -15,7 +15,7 @@ double* read(char *path, int *L, char **name){
   *L=atoi(path+iter+1);
   data = (double*) calloc(*L**L, 6*sizeof(double));
   source.loadFromFile(path);
-  const sf::Uint8 img_data = source.getPixelsPtr();
+  const sf::Uint8 *img_data = source.getPixelsPtr();
   for(iter=0; iter<*L**L; iter++){
     //RED
     data[6*iter]    = img_data[4*iter];
