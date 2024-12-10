@@ -19,7 +19,7 @@ void fft_order_one(int type, int nr, int pwr, double *vct){
 void fft_order_rgb(int comp, int nr, int pwr, double *vct){
   int iter;
 
-  vct+=2*comp;
+  // vct+=2*comp;
 
   for(iter=0; iter < nr; iter++)
     fft_order_one(0, nr, pwr, vct+6*iter*nr);

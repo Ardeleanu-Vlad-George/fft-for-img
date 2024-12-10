@@ -11,8 +11,10 @@
 #ifndef _DEFS_H_
 #define _DEFS_H_
 
-#define PI    3.1415926535
+#define PI            3.1415926535
 
-#define SIGN  1
+#define SIGN          1
+
+#define TARGET_VALUE  255.
 
 #endif//_DEFS_H_
