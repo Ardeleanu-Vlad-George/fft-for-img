@@ -16,10 +16,8 @@ void fft_order_one(int type, int nr, int pwr, double *vct){
     asn(vct+6*iter*(type?nr:1), buff+2*revidx(iter, pwr));
 }
 
-void fft_order_rgb(int comp, int nr, int pwr, double *vct){
+void fft_order_rgb(int nr, int pwr, double *vct){
   int iter;
-
-  // vct+=2*comp;
 
   for(iter=0; iter < nr; iter++)
     fft_order_one(0, nr, pwr, vct+6*iter*nr);
@@ -29,9 +27,9 @@ void fft_order_rgb(int comp, int nr, int pwr, double *vct){
 }
 
 void fft_order(int nr, int pwr, double *vct){
-  fft_order_rgb(0, nr, pwr, vct);
-  fft_order_rgb(1, nr, pwr, vct);
-  fft_order_rgb(2, nr, pwr, vct);
+  fft_order_rgb(nr, pwr, vct);
+  fft_order_rgb(nr, pwr, vct+2);
+  fft_order_rgb(nr, pwr, vct+4);
 }
 
 void fft_apply_one(int type, int nr, int pwr, double *vct, double *rts){
@@ -47,17 +45,15 @@ void fft_apply_one(int type, int nr, int pwr, double *vct, double *rts){
   )for(seqn_pair=vct; seqn_pair < vect_stop; seqn_pair+=12*seqn_lenf*(type?nr:1))
     comp_seqn(
       seqn_lenf,
-      seqn_pair,                          type?nr:1,
-      seqn_pair+6*seqn_lenf*(type?nr:1),  type?nr:1,
+      seqn_pair,                          3*(type?nr:1),
+      seqn_pair+6*seqn_lenf*(type?nr:1),  3*(type?nr:1),
       rts,                                powr_step,
       rts+2*seqn_lenf*powr_step,          powr_step
     );
 }
 
-void fft_apply_rgb(int comp, int nr, int pwr, double *vct, double *rts){
+void fft_apply_rgb(int nr, int pwr, double *vct, double *rts){
   int iter;
-
-  vct+=2*comp;
 
   for(iter=0; iter < nr; iter++)
     fft_apply_one(0, nr, pwr, vct+6*iter*nr, rts);
@@ -67,7 +63,7 @@ void fft_apply_rgb(int comp, int nr, int pwr, double *vct, double *rts){
 }
 
 void fft_apply(int nr, int pwr, double *vct, double *rts){
-  fft_apply_rgb(0, nr, pwr, vct, rts);
-  fft_apply_rgb(1, nr, pwr, vct, rts);
-  fft_apply_rgb(2, nr, pwr, vct, rts);
+  fft_apply_rgb(nr, pwr, vct  , rts);
+  fft_apply_rgb(nr, pwr, vct+2, rts);
+  fft_apply_rgb(nr, pwr, vct+4, rts);
 }
