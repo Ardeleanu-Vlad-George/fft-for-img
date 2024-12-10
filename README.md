@@ -9,3 +9,5 @@ Project is using ISO 1998 version of the C++ language.
 The mistake that prevented the previous version from working was inside the call of 'comp_seqn' of the function 'fft_apply_rgb'. The step length
  for the two data sequences were not updated after shifting to elements that were 6 'doubles' wide (3 complex numbers, one for each color)
 After multiplying the lengths with 3, the issue was resolved.
+Below there is a link to a similar online program that you can use to check your work:
+https://bigwww.epfl.ch/demo/ip/demos/FFT/

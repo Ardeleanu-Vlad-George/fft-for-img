@@ -23,7 +23,6 @@ int main(int argc, char* argv[]){
   set_max_vals(data, size, log_const);
   const_from_max(TARGET_VALUE, log_const);
   nyquist_arrange(data, size);
-  printf("%lf\n%lf\n%lf\n", log_const[0], log_const[1], log_const[2]);
   log_norm_real(data, size, log_const);
 
   write("FFT_of_", name, size, data);
