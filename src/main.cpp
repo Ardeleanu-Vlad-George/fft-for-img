@@ -14,7 +14,7 @@ int main(int argc, char* argv[]){
   data = read(argv[1], &size, &name);
   // ruts = every_rou(size);
   // powr = getexp(size);
-  // fft_order(size, powr, data);
+  fft_order(size, powr, data);
   // fft_apply(size, powr, data, ruts);
   write("FFT_of_", name, size, data);
   //
